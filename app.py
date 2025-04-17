@@ -1,5 +1,6 @@
 from flask import Flask
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ def show_time():
     return f"""
     <html>
     <head>
-        <meta charset='utf-8'>
+        <meta charset="utf-8">
         <title>即時時間</title>
         <style>
             body {{
@@ -29,3 +30,7 @@ def show_time():
     </body>
     </html>
     """
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
